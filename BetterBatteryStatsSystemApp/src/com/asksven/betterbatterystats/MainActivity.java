@@ -1,23 +1,18 @@
 package com.asksven.betterbatterystats;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import com.asksven.android.common.utils.SystemAppInstaller;
+import com.asksven.android.common.utils.SystemAppInstaller.Status;
 import com.asksven.betterbatterystats.R;
-import android.os.Build;
+
 import android.os.Bundle;
-import android.os.IBinder;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,8 +20,8 @@ public class MainActivity extends Activity
 {
 
 	final static String TAG = "BetteryInfoTest.MainActivity";
-	final static String APK = "com.asksven.betterbatterystats";
-	
+	final static String PACKAGE = "com.asksven.betterbatterystats";
+
 	Object m_stats = null;
 
 	@Override
@@ -54,8 +49,52 @@ public class MainActivity extends Activity
 		{
 			permDump.setText("DUMP  not granted");
 		}
+		
+		final Button buttonUninstall = (Button) findViewById(R.id.buttonUninstall);
 
+		buttonUninstall.setOnClickListener(new View.OnClickListener()
+		{
+			public void onClick(View v)
+			{
+				try
+				{
+					Status status = SystemAppInstaller.uninstall(PACKAGE);
 
+					if (status.getSuccess())
+					{
+						Toast.makeText(MainActivity.this, "Succeeded", Toast.LENGTH_LONG).show();
+						// prepare the alert box
+			            AlertDialog.Builder alertbox = new AlertDialog.Builder(MainActivity.this);
+			 
+			            // set the message to display
+		            	alertbox.setMessage("Uninstalled as system app: your preferences have been reset. Please reboot to clean up and update your preferences.");
+			   			 
+			            // add a neutral button to the alert box and assign a click listener
+			            alertbox.setNeutralButton("Ok", new DialogInterface.OnClickListener()
+			            {
+			 
+			                // click listener on the alert box
+			                public void onClick(DialogInterface arg0, int arg1)
+			                {
+			                }
+			            });
+			 
+			            // show it
+			            alertbox.show();
+					}
+					else
+					{
+						Toast.makeText(MainActivity.this, "Failed", Toast.LENGTH_LONG).show();
+						Log.e(TAG,"History: " + status.toString());
+					}						
+				}
+				catch (Exception e)
+				{
+					Log.e(TAG, "Exception: " + Log.getStackTraceString(e));
+					Toast.makeText(MainActivity.this, "Failed", Toast.LENGTH_LONG).show();
+				}
+			}
+		});
 	}
 
 		
