@@ -89,4 +89,40 @@
     <!-- version-tag: 1 -->
     <import file="${sdk.dir}/tools/ant/build.xml" />
 
+    <target name="cwm" description="create CWM ZIP-files">
+	<!-- clean up -->
+	<delete>
+	    <fileset dir="." includes="BetterBatteryStats_SystemApp*.zip"/>
+	</delete>
+
+	<!-- read the version number from manifest -->
+	<xmlproperty file="AndroidManifest.xml" collapseAttributes="true"/>
+	<property name="version" value="${manifest.android:versionName}" />
+
+
+	<antcall target="cwmzip">
+    		<param name="zipfile" value="BetterBatteryStats_SystemApp_signed_CWM_${version}"/>
+		<param name="apkfile" value="com.asksven.betterbatterystats_signed.apk"/>
+  	</antcall>
+
+	<antcall target="cwmzip">
+    		<param name="zipfile" value="BetterBatteryStats_SystemApp_debug_CWM_${version}"/>
+		<param name="apkfile" value="com.asksven.betterbatterystats_debug.apk"/>
+  	</antcall>
+
+	<antcall target="cwmzip">
+    		<param name="zipfile" value="BetterBatteryStats_SystemApp_xdaedition_CWM_${version}"/>
+		<param name="apkfile" value="com.asksven.betterbatterystats_xdaedition.apk"/>
+  	</antcall>
+	
+    </target>
+
+    <target name="cwmzip" description="zip function">
+	<echo message="zipfile=${zipfile}"/>
+	<echo message="apkfile=${apkfile}"/>
+  	<zip destfile="${zipfile}.zip">
+       		<fileset dir="src-cwm"/>
+		<zipfileset dir="signed" includes="${apkfile}" fullpath="system/priv-app/${apkfile}"/>
+	</zip>
+    </target>
 </project>
