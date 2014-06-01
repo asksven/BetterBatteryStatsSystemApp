@@ -115,6 +115,9 @@
 		<param name="apkfile" value="com.asksven.betterbatterystats_xdaedition.apk"/>
   	</antcall>
 	
+	<zip destfile="REMOVE_BetterBatteryStats_SystemApp_CWM_${version}.zip">
+       		<fileset dir="src-cwm-delete"/>
+	</zip>
     </target>
 
     <target name="cwmzip" description="zip function">

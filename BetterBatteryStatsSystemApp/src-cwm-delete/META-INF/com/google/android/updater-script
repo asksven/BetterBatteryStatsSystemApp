@@ -1,0 +1,6 @@
+ui_print("Removing BetterBatteryStats as a system app..."); 
+run_program("/sbin/busybox", "mount", "/system"); 
+show_progress(1, 15); 
+ui_print("Removing BetterBatteryStats system applications ...");
+delete("/system/priv-app/com.asksven.betterbatterystats*.apk");
+ui_print("Removal complete!");
