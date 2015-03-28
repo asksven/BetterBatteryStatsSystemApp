@@ -1,5 +1,15 @@
 <resources>
 
     <string name="app_name">BetterBatteryStatsSystemApp</string>
+    <string name="expl_system_app">This is a companion app to BetterBatteryStats. It was copied to /system and stays there to grant permissions that can only be granted to system apps.\nThis app has no functionality at all.</string>
+    <string name="expl_system_app_workaround">If the in-app uninstall fails please use this workaround</string>
+    <string name="label_uninstall">Uninstall</string>
+    <string name="info_uninstalled_system_app">Uninstalled system app: your preferences have been reset. Please reboot to clean up and update your preferences.</string>
+    <string name="info_succeeded">Succeeded</string>
+    <string name="info_failed">Failed, try recovery ZIP</string>
+    <string name="label_button_recovery">Download Recovery ZIP</string>
+    <string name="label_granted">granted</string>
+    <string name="label_not_granted">not granted</string>
+    
 
 </resources>

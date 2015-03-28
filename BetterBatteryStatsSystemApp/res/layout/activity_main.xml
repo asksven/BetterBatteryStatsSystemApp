@@ -32,9 +32,17 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textViewPermDUMP"
         android:layout_marginTop="21dp"
-        android:text="This is a companion app to BetterBatteryStats. It will be copied to /system and stay there to grant permissions that can only be granted to system apps.\nThis app has no functionality at all."
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:text="@string/expl_system_app"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
+        <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/buttonUninstall"
+        android:text="@string/expl_system_app_workaround"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
     <Button
         android:id="@+id/buttonUninstall"
         android:layout_width="wrap_content"
@@ -42,6 +50,17 @@
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
-        android:text="Uninstall" />
+        android:text="@string/label_uninstall" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="@string/label_button_recovery" />
+
+
 
 </RelativeLayout>
