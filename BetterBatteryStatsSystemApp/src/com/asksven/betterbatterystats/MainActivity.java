@@ -24,7 +24,7 @@ import javax.security.auth.x500.X500Principal;
 
 import com.asksven.android.common.utils.SystemAppInstaller;
 import com.asksven.android.common.utils.SystemAppInstaller.Status;
-import com.asksven.betterbatterystats_xdaedition.R;
+import com.asksven.betterbatterystats.R;
 
 import android.net.Uri;
 import android.os.Bundle;
