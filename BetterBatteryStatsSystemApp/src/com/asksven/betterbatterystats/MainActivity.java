@@ -22,12 +22,13 @@ import java.security.cert.X509Certificate;
 
 import javax.security.auth.x500.X500Principal;
 
-import com.asksven.android.common.utils.SystemAppInstaller;
-import com.asksven.android.common.utils.SystemAppInstaller.Status;
-import com.asksven.betterbatterystats.R;
+import com.asksven.betterbatterystats.utils.SystemAppInstaller;
+import com.asksven.betterbatterystats.utils.SystemAppInstaller.Status;
+import com.asksven.betterbatterystats_xdaedition.R;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -36,15 +37,13 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends ActionBarActivity
+public class MainActivity extends Activity
 {
 
 	final static String TAG = "BetteryInfoTest.MainActivity";
@@ -60,10 +59,6 @@ public class MainActivity extends ActionBarActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-		toolbar.setTitle(getString(R.string.app_name));
-	    setSupportActionBar(toolbar);
 
 		final TextView permBattery = (TextView) findViewById(R.id.textViewPermBATTERY_STATS);
 		if (hasBatteryStatsPermission(this))

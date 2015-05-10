@@ -4,7 +4,6 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <include layout="@layout/toolbar_icon" />
 
     <!-- do not translate: strings are set in SystemAppActivity -->
 
