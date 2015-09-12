@@ -102,7 +102,7 @@
 
 	<antcall target="cwmzip">
     		<param name="zipfile" value="BetterBatteryStats_SystemApp_signed_CWM_${version}"/>
-		<param name="apkfile" value="com.asksven.betterbatterystats_signed.apk"/>
+		<param name="apkfile" value="com.asksven.betterbatterystats_release.apk"/>
   	</antcall>
 
 	<antcall target="cwmzip">
@@ -125,7 +125,7 @@
 	<echo message="apkfile=${apkfile}"/>
   	<zip destfile="${zipfile}.zip">
        		<fileset dir="src-cwm"/>
-		<zipfileset dir="signed" includes="${apkfile}" fullpath="system/priv-app/${apkfile}"/>
+		<zipfileset dir="bin" includes="${apkfile}" fullpath="system/priv-app/${apkfile}"/>
 	</zip>
     </target>
 </project>
